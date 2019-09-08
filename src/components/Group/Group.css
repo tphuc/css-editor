@@ -1,0 +1,12 @@
+.group-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin:2px;
+    font-weight: 700;
+    align-items: stretch;
+    color: #eceff4;
+    background: #4c566ac2;
+    user-select: none;
+    cursor: pointer;
+}
