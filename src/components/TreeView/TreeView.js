@@ -1,20 +1,34 @@
 import React from 'react';
 import {frost_blue, dark1, dark4, dark3, frost_ocean, dark2, frost_green, frost_cyan, light3} from '../Color/Nord';
+import PropTypes from 'prop-types';
 
 const tree = [
     {
         id: '1231231212312312',
         children: [
             {
-
+                id: 'asdasdasd',
             }
         ]
     },
     {
-
+        id: 'awd2asdasd',
+        children: [
+            {
+                id: 'asda2e123',
+                children: [
+                    {
+                        id: 'asdasdawdaw',
+                    },
+                    {
+                        id: 'asd1231232w',
+                    }
+                ]
+            }
+        ]
     },
     {
-
+        id: 'asdasdasd23',
     }
 ]
 
@@ -25,15 +39,27 @@ class TreeItem extends React.Component {
         super(props)
     }
 
+    static propTypes = {
+        depth: PropTypes.number
+    }
+
+    static defaultProps = {
+        depth: 0
+    }
+    
     componentDidMount(){
         const { x, y, height, width } = this.wrapper.getBoundingClientRect();
-        this.topArea = y + height * 1/3
-        this.bottomArea = y + height * 2/3
+        this.topArea = y + height * 1/3 - 30
+        this.bottomArea = y + height * 2/3 - 30
+        this.innerHTML = this.wrapper.innerHTML
     }
 
     dragStart = (e) => {
-        e.dataTransfer.setData("text/data", e.target.id);
-        e.target.style.height = 0
+        e.dataTransfer.setData("text", '123');
+        // disable view
+        e.currentTarget.style.minHeight = '0px'
+        e.currentTarget.style.height = '0px'
+        e.currentTarget.innerHTML = ''
     }
     
     dragLeave = (e) => {
@@ -43,11 +69,21 @@ class TreeItem extends React.Component {
 
     dragEnd = (e) => {
         e.target.style.opacity = 1;
+        //enable view
+        e.currentTarget.style.minHeight = '25px'
+        e.currentTarget.style.height = '25px'
+        e.currentTarget.innerHTML = this.innerHTML
     }
 
     dragOver = (e) => {
         e.preventDefault();
-        console.log('top', this.topArea, 'bottom', this.bottomArea, e.clientY)
+        // if(e.target === this.wrapper){
+        //     return
+        // }
+        const { x, y, height, width } = this.wrapper.getBoundingClientRect();
+        this.topArea = y + height * 1/3 
+        this.bottomArea = y + height * 2/3 
+
         if(this.topArea > e.clientY){
             this.wrapper.style.background = `linear-gradient(90deg, ${dark3}, ${dark2})`
             this.wrapper.style.borderTop = `3px solid ${frost_blue}`
@@ -64,8 +100,8 @@ class TreeItem extends React.Component {
     }
 
     drop = (e) => {
+        console.log(e.dataTransfer.getData("text"))
         e.preventDefault();
-       
     }
 
     render() {
@@ -83,13 +119,16 @@ class TreeItem extends React.Component {
                 onDrop={this.drop}
                 style={{ 
                     background: `linear-gradient(90deg, ${dark3}, ${dark2})`, 
-                    minHeight: 30, margin:2, display:'flex', alignItems:'center',
-                    borderRadius: 2,
+                    minHeight: 25, margin:2, display:'flex', alignItems:'center',
+                    borderRadius: 5,
                     boxSizing: "border-box",
                     borderWidth: 3,
                     transition:'0.2s',
                     color: light3,
-                    fontSize:12
+                    fontSize:8,
+                    paddingLeft: 5,
+                    marginLeft: this.props.depth * 20,
+                    position:'relative'
                  }}
                 draggable={true}
             >
@@ -103,12 +142,26 @@ class TreeItem extends React.Component {
 export default class TreeView extends React.Component {
 
 
+
+    renderItems = (data=[], depth=0) => {
+        return data.map(obj => {
+            return (
+                <React.Fragment>
+                <TreeItem depth={depth}>{obj.id}</TreeItem>
+                {
+                    obj.children && this.renderItems(obj.children, depth + 1)   
+                }
+                </React.Fragment>
+            )
+        })
+    }
+
     render() {
         return (
             <div style={{ height: 400}}
             >
-               <TreeItem>item1</TreeItem>
-               <TreeItem>item2</TreeItem>
+               
+               {this.renderItems(tree)}
             </div>
         )
     }
