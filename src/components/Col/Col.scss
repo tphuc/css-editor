@@ -1,5 +1,5 @@
-$backgroundDark :  linear-gradient(135deg, rgb(46,52,64) 0%, rgb(52, 59, 73) 100%);
-$borderDark: #434c5e;
+$backgroundDark :  #131518;
+$borderDark: #000000;
 $backgroundLight: #eceff4;
 $borderLight: #d8dee9;
 
@@ -15,7 +15,7 @@ $borderLight: #d8dee9;
 
 .resize-vertical {
     position: absolute;
-    width: 2px;
+    width: 1px;
     background-color: $borderDark;
     height: 100%;
     pointer-events: stroke;

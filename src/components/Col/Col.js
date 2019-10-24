@@ -4,8 +4,9 @@ import './Col.scss';
 import {unitToNum} from '../../lib/utils';
 import store from '../../redux/store' 
 import { setColInstanceById } from '../../redux/reducers/Col';
+import { dark1 } from '../Color/Nord';
 
-const MIN_WIDTH = 100
+const MIN_WIDTH = 50
 const MAX_WIDTH = 700
 const MIN_HEIGHT = 600
 
@@ -103,22 +104,31 @@ export class Col extends React.Component {
             className={`resize-vertical ${resizeBar}`} 
             ref={ref => this[`slider ${resizeBar}`] = ref} 
             onMouseDown={resizeBar? this.handleMouseDown : null} 
-        />
+            style={{backgroundColor:dark1}}
+        >
+            
+        </div>
     }
 
     render(){
-        const {resizeBar} = this.props
+        const {resizeBar, style} = this.props
 
         return (
             <div className="cell-wrapper" 
                 style={{
                     ...ResizableColStyles.cellWrapper,
-                    ...ResizableColStyles.resizeBar[resizeBar]
+                    ...ResizableColStyles.resizeBar[resizeBar],
+                    zIndex: 0,
+                    height:'100%',                    
                 }} 
                 ref={ref => this.wrapper = ref}
             >
-                <div className="cell" ref={ref => this.container = ref}>
-                    {this.props.children}
+                <div className="cell" ref={ref => this.container = ref} style={{backgroundColor: dark1, ...style }}>
+                    <div style={{position:'absolute', zIndex: 10, width:'100%', height:'100%', boxShadow:'100px 0px 5px #111'}}>
+                        <div style={{ padding:5, height:'100%',}}>
+                            {this.props.children}
+                        </div>
+                    </div>
                 </div>
                 { this.renderResizeBar() }
             </div>

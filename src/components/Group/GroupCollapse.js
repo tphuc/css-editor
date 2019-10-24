@@ -3,7 +3,8 @@ import {ChevronDown, Move, RotateCcw, Shuffle} from 'react-feather'
 import './Group.css'
 import ReactResizeDetector from 'react-resize-detector';
 import store from '../../redux/store';
-import {setColCssById} from '../../redux/reducers/Col'
+import {setColCssById} from '../../redux/reducers/Col';
+
 export default class Group extends React.Component{
 
     state = {
@@ -47,8 +48,11 @@ export default class Group extends React.Component{
         return <div className='group' ref={ref => this.wrapper = ref} >
             <div className='group-header' 
                 onClick={this.headerClick}>
-                {!this.state.iconDisplayOnly && label.toUpperCase()} 
-                {this.getIcon(label)}
+                <div style={{ flex:1, display:'flex', justifyContent:'center', alignItems:'center'}}>
+                    {this.getIcon(label)}
+                </div>
+                {!this.state.iconDisplayOnly && <p style={{margin:0, alignSelf:'center'}}>{label.toUpperCase()}</p>} 
+                
             </div>
             <ReactResizeDetector handleWidth onResize={this.onResize} />
             { this.state.expand && this.props.children}
