@@ -4,7 +4,7 @@ import './Col.scss';
 import {unitToNum} from '../../lib/utils';
 import store from '../../redux/store' 
 import { setColInstanceById } from '../../redux/reducers/Col';
-import { dark1 } from '../Color/Nord';
+import { dark1, dark2 } from '../Color/Nord';
 
 const MIN_WIDTH = 50
 const MAX_WIDTH = 700
@@ -31,6 +31,11 @@ const ResizableColStyles = {
         flexDirection:'row', 
         position:'relative', 
     }
+}
+
+const THEME = {
+    resizeBarColor: '#1a1a1a',
+    colBg: dark2
 }
 
 
@@ -104,7 +109,7 @@ export class Col extends React.Component {
             className={`resize-vertical ${resizeBar}`} 
             ref={ref => this[`slider ${resizeBar}`] = ref} 
             onMouseDown={resizeBar? this.handleMouseDown : null} 
-            style={{backgroundColor:dark1}}
+            // style={{backgroundColor:THEME.resizeBarColor}}
         >
             
         </div>
@@ -123,7 +128,7 @@ export class Col extends React.Component {
                 }} 
                 ref={ref => this.wrapper = ref}
             >
-                <div className="cell" ref={ref => this.container = ref} style={{backgroundColor: dark1, ...style }}>
+                <div className="cell" ref={ref => this.container = ref} style={{ ...style }}>
                     <div style={{position:'absolute', zIndex: 10, width:'100%', height:'100%', boxShadow:'100px 0px 5px #111'}}>
                         <div style={{ padding:5, height:'100%',}}>
                             {this.props.children}

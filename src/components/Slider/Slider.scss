@@ -1,3 +1,12 @@
+$dark1 : #111111;
+$dark2 : #1f1f1f;
+$dark3 : #434549;
+$dark4 : #3b3c3f;
+
+$light1 : #eceff4;
+$light2 : #e5e9f0;
+$light3 : #aaaaaa;
+
 .css-attr-tag{
     display: flex;
     padding: 5px;
@@ -10,8 +19,9 @@
     line-height: 20px; 
     justify-content: center;
     align-items: stretch;
-    color: #d8dee9;
-    background:#3b4252;
+    color: $light3;
+    background:$dark3;
+    box-shadow: 0 10px 100px 0px #242425;
     border-radius: 40px;
     text-align: center;
     vertical-align: middle;
@@ -21,15 +31,15 @@ span.MuiSlider-root{
     padding: 30px 0;
     margin-left: 10px;
     margin-right: 10px;
-    color: #434c5e
+    color: $dark3
 }
 span.MuiSlider-rail{
-    background-color: #434c5e
+    background-color: $dark2
 }
 span.MuiSlider-track{
-    background-color: #4c566a
+    background-color: $dark4
 }
 span.MuiSlider-thumb{
-    background-color: #4c566a;
+    background-color: $dark4;
 }
 

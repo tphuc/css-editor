@@ -1,5 +1,5 @@
-$backgroundDark :  #131518;
-$borderDark: #000000;
+$backgroundDark :  #202122;
+$borderDark: #101011;
 $backgroundLight: #eceff4;
 $borderLight: #d8dee9;
 
@@ -15,7 +15,7 @@ $borderLight: #d8dee9;
 
 .resize-vertical {
     position: absolute;
-    width: 1px;
+    width: 2px;
     background-color: $borderDark;
     height: 100%;
     pointer-events: stroke;

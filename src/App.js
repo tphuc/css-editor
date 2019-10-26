@@ -9,15 +9,22 @@ function App() {
   return (
     <div className="Editor" style={{ width: '100%', height: window.innerHeight, position: 'relative' }}>
       <Row>
-        <Col id='HierarchyView' resizeBar='right' style={{backgroundColor:'#0a0a0a'}}>
+        <Col id='HierarchyView' resizeBar='right' style={{backgroundColor:'#000000'}}>
+              <EditorPanel>
+                {/* <GroupCollapse label='Translate'>
+                  <ThreeView></ThreeView>
+                </GroupCollapse> */}
+              </EditorPanel>
+          </Col>
+        <Col id='HierarchyView' resizeBar='right'>
             <EditorPanel>
-              <GroupCollapse label='Translate'>
+              <GroupCollapse label='Translate' style={{backgroundColor:'#1a1a1a'}}>
                 <ThreeView></ThreeView>
               </GroupCollapse>
             </EditorPanel>
         </Col>
-        <Col id='Viewport' resizeBar={false}></Col>
-        <Col id='CssToolbar' resizeBar='left'  style={{backgroundColor:'#0a0a0a'}}>
+        <Col id='Viewport' resizeBar={false} style={{backgroundColor:'#111111'}}></Col>
+        <Col id='CssToolbar' resizeBar='left'  style={{backgroundColor:'#1a1a1a'}}>
             <EditorPanel>
               <GroupCollapse label='Translate'>
                         <Slider cssAttr={'Translate X'}></Slider> 

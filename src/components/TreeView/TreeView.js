@@ -32,7 +32,31 @@ const tree = [
                             {
                                 id: 'asd1231232w',
                             },
-        
+                            {
+                                id: '12312311232'
+                            },
+                            {
+                                id: '12dawdw23112312'
+                            },
+                            {
+                                id: '--1231232312'
+                            },
+                            {
+                                id: '12ooo[[[aw12312'
+                            },
+                            {
+                                id: '122fdd3112312'
+                            },
+                            {
+                                id: '12odw2302312'
+                            },
+                            {
+                                id: '1290923712112312'
+                            },
+                            {
+                                id: '423212312'
+                            },
+
                         ]
                     }
                 ]
@@ -199,7 +223,7 @@ class TreeGroup extends React.Component {
                         alignItems: 'center',
                         borderRadius: 5,
                         boxSizing: "border-box",
-                        boxShadow:'0px 2px 5px rgba(0,0,0,0.2)',
+                        // boxShadow:'0px 2px 5px rgba(0,0,0,0.2)',
                         borderWidth: 3,
                         justifyContent: 'space-between',
                         transition: '0.2s',
@@ -350,7 +374,7 @@ class TreeItem extends React.Component {
                     paddingLeft: 5,
                     marginLeft: this.props.depth * 20,
                     position: 'relative',
-                    boxShadow:'0px 2px 5px rgba(0,0,0,0.1)',
+                    // boxShadow:'0px 2px 5px rgba(0,0,0,0.1)',
                 }}
                 draggable={!this.props.disableDragDrop}
             >

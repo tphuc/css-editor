@@ -1,5 +1,5 @@
 const dark1 = '#111111'
-const dark2 = 'rgb(30,30,34)'
+const dark2 = '#1f1f1f'
 const dark3 = '#434c5e'
 const dark4 = '#4c566a'
 
@@ -15,7 +15,7 @@ const frost_blue = '#5e81ac'
 const text_light = '#b0b2b7'
 const text_dim = '#b0b2b7'
 
-const LG_dark = `linear-gradient(45deg, rgba(40,40,42, 0.5) 20%, rgb(30,30,31, 0.5))`
+const LG_dark = `linear-gradient(45deg, rgba(60,60,62, 0.5) 20%, rgb(70,70,72, 0.5))`
 
 
 export {
